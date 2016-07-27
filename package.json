@@ -1,0 +1,17 @@
+{
+  "name": "sneak",
+  "version": "0.1.0",
+  "description": "A simple JavaScript message encoder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "xor",
+    "base64",
+    "encode",
+    "decode"
+  ],
+  "author": "Benjamin Toll",
+  "license": "MIT"
+}

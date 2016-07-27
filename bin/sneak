@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+'use strict';
+
+const sneak = require('../index');
+const argv = process.argv;
+let index;
+
+if ((index = argv.indexOf('-e')) > -1) {
+    console.log(sneak.encode(argv[index + 1], 666));
+} else if ((index = argv.indexOf('-d')) > -1) {
+    console.log(sneak.decode(argv[index + 1], 666));
+} else {
+    console.log('Unrecognized command');
+}
+
