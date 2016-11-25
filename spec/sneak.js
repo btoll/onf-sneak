@@ -30,6 +30,13 @@ describe('sneak', () => {
             it('should decode', () => {
                 expect(sneak.decode(value, key)).toBe(msg);
             });
+
+            it('should throw if key is not of type Number', () => {
+                expect(() => sneak.decode(value, 'rupert')).toThrow();
+                expect(() => sneak.decode(value, true)).toThrow();
+                expect(() => sneak.decode(value, {})).toThrow();
+                expect(() => sneak.decode(value, [])).toThrow();
+            });
         });
 
         describe('when set using #setKey API', () => {
@@ -43,6 +50,23 @@ describe('sneak', () => {
             it('should decode', () => {
                 expect(sneak.decode(value)).toBe(msg);
             });
+
+            it('should throw if key is not of type Number', () => {
+                expect(() => sneak.setKey('rupert')).toThrow();
+                expect(() => sneak.setKey(true)).toThrow();
+                expect(() => sneak.setKey({})).toThrow();
+                expect(() => sneak.setKey([])).toThrow();
+            });
+        });
+    });
+
+    describe('#generateKey', () => {
+        it('should generate a 10-digit key by default', () => {
+            expect(sneak.generateKey().toString().length).toBe(10);
+        });
+
+        it('should generate a custom key length when passed a param', () => {
+            expect(sneak.generateKey(15).toString().length).toBe(15);
         });
     });
 });

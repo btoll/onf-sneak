@@ -7,6 +7,12 @@
 
 `npm install https://github.com/btoll/sneak.git -g`
 
+## Example
+
+Generate a symmetric key and send to a friend using GPG:
+
+    sneak generateKey | gpg -e -a -r ben@example.com
+
 ## License
 
 [MIT](LICENSE)
