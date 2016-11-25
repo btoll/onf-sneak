@@ -3,33 +3,33 @@
 //
 // 'hello world'
 // .split('')
-// .map(s => s.charCodeAt() ^ symmetricKey)
-// .map(s => String.fromCharCode(s ^ symmetricKey))
+// .map(s => s.charCodeAt() ^ key)
+// .map(s => String.fromCharCode(s ^ key))
 // .join('');
 
 'use strict';
 let secret = null;
-let key = null;
+let sharedKey = null;
 
 module.exports = {
-    decode: (msg, symmetricKey) =>
+    decode: (msg, key) =>
         (
           secret = new Buffer(msg, 'base64').toString('utf8'),
 
           secret.split(' ')
-              .map(c => String.fromCharCode(c ^ (key || symmetricKey)))
+              .map(c => String.fromCharCode(c ^ (key || sharedKey)))
               .join('')
         ),
 
-    encode: (msg, symmetricKey) =>
+    encode: (msg, key) =>
         (
             secret = msg.split('')
-                .map(c => c.charCodeAt() ^ (key || symmetricKey))
+                .map(c => c.charCodeAt() ^ (key || sharedKey))
                 .join(' '),
 
             new Buffer(secret, 'utf8').toString('base64')
         ),
 
-    setKey: symmetricKey => key = symmetricKey
+    setKey: key => sharedKey = key
 };
 
