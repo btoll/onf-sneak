@@ -2,6 +2,9 @@
   "name": "sneak",
   "version": "0.1.0",
   "description": "A simple JavaScript message encoder",
+  "bin": {
+    "sneak": "./bin/sneak"
+  },
   "main": "index.js",
   "keywords": [
     "xor",
