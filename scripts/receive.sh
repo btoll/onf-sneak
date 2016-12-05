@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# -q      Quiet mode.  Causes most warning and diagnostic messages to be suppressed.
+#
+# -t      Force pseudo-tty allocation.  This can be used to execute arbitrary screen-based programs on a remote
+#         machine, which can be very useful, e.g. when implementing menu services.  Multiple -t options force tty
+#         allocation, even if ssh has no local tty.
 receive() {
-    ssh my_vps "cat my_pipe" | xargs sneak -d
+    ssh -q -tt remote_machine "cat fifo" | xargs sneak -d
     receive
 }
 

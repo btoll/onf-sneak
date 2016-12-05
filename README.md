@@ -19,7 +19,7 @@ Poor Man's Chat App
 - Add each public key to the remote server's `authorized_keys` file.
 - Each participant should add their key to their `SSH-AGENT`.
 - Create a named pipe on the remote server.
-- Replace the vps name and named pipe name for each script in the `scripts/` directory.
+- Replace the vps name and the name of the named pipe for each script in the `scripts/` directory.
 - Have fun!
 
 ## License
