@@ -14,21 +14,20 @@ const bignum = require('bignum');
 const crypto = require('crypto');
 let sharedKey = null;
 
-const checkKey = key => {
-    if (key && (typeof key !== 'number')) {
-        throw new Error('Sneak: Key must be of type Number');
+const convertKey = key => {
+    if (!key) {
+        throw new Error('Sneak: There is no key to decode, aborting...');
+    }
+
+    if (bignum.isBigNum(key) || (typeof key === 'number')) {
+        return bignum(key);
+    } else {
+        throw new Error('Sneak: Key must be of type Number or BigNum');
     }
 };
 
 const decode = (msg, key) => {
-    const secret = key || sharedKey;
-
-    if (secret == null) {
-        throw new Error('Sneak: There is no key to decode, aborting...');
-    }
-
-    checkKey(secret);
-
+    const secret = convertKey(key || sharedKey);
     const toDecode = new Buffer(msg, 'base64').toString('utf8');
 
     return toDecode.split(' ')
@@ -42,13 +41,13 @@ const decode = (msg, key) => {
 };
 
 const encode = (msg, key) => {
-    checkKey(key);
+    const secret = convertKey(key || sharedKey);
 
     const encoded = msg.split('')
         .map(c => bignum.xor(
             c.charCodeAt(),
-            (key || sharedKey))
-        )
+            secret
+        ))
         .join(' ');
 
     return new Buffer(encoded, 'utf8').toString('base64');
@@ -62,20 +61,19 @@ const generateKey = n => {
     }
 
     res = [];
-    // Default to 10-digit keys.
-    n = n || 10;
+    // Default to 50-digit keys.
+    n = n || 50;
     // Keys will be 1-9, inclusive.
     res.push(new Uint32Array(crypto.randomBytes(1))[0] % 9 + 1);
 
-    return Number(res.concat(generateKey(--n)).join(''));
+    return bignum(res.concat(generateKey(--n)).join(''));
 };
 
 const getKey = () =>
     sharedKey;
 
 const setKey = key => {
-    checkKey(key);
-    sharedKey = key;
+    sharedKey = convertKey(key);
 };
 
 module.exports = {

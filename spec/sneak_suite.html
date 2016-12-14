@@ -88,22 +88,22 @@ span.xdescribe a:active {
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should encode'</span>
+                <span>'should not encode'</span>
             </p></div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should decode'</span>
+                <span>'should not decode'</span>
             </p></div></div></div><div style=""><p class="stripe">
                 <span class="describe">
                     (<a href="#">describe</a>)
                 </span>
-                <span>'shared key'</span>
+                <span>'#encode'</span>
             </p><div><div style="padding-left: 50px;"><p class="">
                 <span class="describe">
                     (<a href="#">describe</a>)
                 </span>
-                <span>'when passed as a param'</span>
+                <span>'when key is passed as a param'</span>
             </p><div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
@@ -113,17 +113,17 @@ span.xdescribe a:active {
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should decode'</span>
+                <span>'should not throw if key is of type Number or BigNum'</span>
             </p></div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should throw if key is not of type Number'</span>
+                <span>'should throw if key is not of type Number or BigNum'</span>
             </p></div></div></div><div style="padding-left: 50px;"><p class="">
                 <span class="describe">
                     (<a href="#">describe</a>)
                 </span>
-                <span>'when set using #setKey API'</span>
+                <span>'when key is set prior'</span>
             </p><div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
@@ -133,12 +133,57 @@ span.xdescribe a:active {
                 <span class="it">
                     it -> 
                 </span>
+                <span>'should not throw if key is of type Number or BigNum'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should throw if key is not of type Number or BigNum'</span>
+            </p></div></div></div></div></div><div style=""><p class="stripe">
+                <span class="describe">
+                    (<a href="#">describe</a>)
+                </span>
+                <span>'#decode'</span>
+            </p><div><div style="padding-left: 50px;"><p class="">
+                <span class="describe">
+                    (<a href="#">describe</a>)
+                </span>
+                <span>'when key is passed as a param'</span>
+            </p><div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
                 <span>'should decode'</span>
             </p></div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should throw if key is not of type Number'</span>
+                <span>'should not throw if key is of type Number or BigNum'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should throw if key is not of type Number or BigNum'</span>
+            </p></div></div></div><div style="padding-left: 50px;"><p class="">
+                <span class="describe">
+                    (<a href="#">describe</a>)
+                </span>
+                <span>'when key is set prior'</span>
+            </p><div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should decode'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should not throw if key is of type Number or BigNum'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should throw if key is not of type Number or BigNum'</span>
             </p></div></div></div></div></div><div style=""><p class="stripe">
                 <span class="describe">
                     (<a href="#">describe</a>)
@@ -148,12 +193,57 @@ span.xdescribe a:active {
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should generate a 10-digit key by default'</span>
+                <span>'should generate a BigNum key'</span>
             </p></div><div style="padding-left: 50px;"><p class="">
                 <span class="it">
                     it -> 
                 </span>
-                <span>'should generate a custom key length when passed a param'</span>
+                <span>'should generate a 50-digit key by default'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should generate keys of varying lengths'</span>
+            </p></div></div></div><div style=""><p class="stripe">
+                <span class="describe">
+                    (<a href="#">describe</a>)
+                </span>
+                <span>'#getKey'</span>
+            </p><div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should return the shared key'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should return a type BigNum'</span>
+            </p></div></div></div><div style=""><p class="stripe">
+                <span class="describe">
+                    (<a href="#">describe</a>)
+                </span>
+                <span>'#setKey'</span>
+            </p><div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should allow type Number'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should allow type BigNum'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should convert type Number to BigNum'</span>
+            </p></div><div style="padding-left: 50px;"><p class="">
+                <span class="it">
+                    it -> 
+                </span>
+                <span>'should throw if setting a key not of type Number or BigNum '</span>
             </p></div></div></div>
 
 <script>
