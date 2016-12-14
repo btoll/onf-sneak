@@ -1,3 +1,4 @@
+// TODO: #generateKey should be stronger.
 // Simple message encoder using XOR.
 //
 //
@@ -10,7 +11,6 @@
 //
 'use strict';
 
-const bignum = require('bignum');
 const crypto = require('crypto');
 let sharedKey = null;
 
@@ -21,37 +21,23 @@ const checkKey = key => {
 };
 
 const decode = (msg, key) => {
-    const secret = key || sharedKey;
+    checkKey(key);
 
-    if (secret == null) {
-        throw new Error('Sneak: There is no key to decode, aborting...');
-    }
+    const secret = new Buffer(msg, 'base64').toString('utf8');
 
-    checkKey(secret);
-
-    const toDecode = new Buffer(msg, 'base64').toString('utf8');
-
-    return toDecode.split(' ')
-        .map(c => String.fromCharCode(
-            bignum.xor(
-                c,
-                secret
-            )
-        ))
+    return secret.split(' ')
+        .map(c => String.fromCharCode(c ^ (key || sharedKey)))
         .join('');
 };
 
 const encode = (msg, key) => {
     checkKey(key);
 
-    const encoded = msg.split('')
-        .map(c => bignum.xor(
-            c.charCodeAt(),
-            (key || sharedKey))
-        )
+    const secret = msg.split('')
+        .map(c => c.charCodeAt() ^ (key || sharedKey))
         .join(' ');
 
-    return new Buffer(encoded, 'utf8').toString('base64');
+    return new Buffer(secret, 'utf8').toString('base64');
 };
 
 const generateKey = n => {
@@ -70,9 +56,6 @@ const generateKey = n => {
     return Number(res.concat(generateKey(--n)).join(''));
 };
 
-const getKey = () =>
-    sharedKey;
-
 const setKey = key => {
     checkKey(key);
     sharedKey = key;
@@ -82,7 +65,6 @@ module.exports = {
     decode,
     encode,
     generateKey,
-    getKey,
     setKey
 };
 

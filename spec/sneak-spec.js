@@ -8,13 +8,12 @@ describe('sneak', () => {
     let value;
 
     describe('no shared key', () => {
-        it('should encode', () => {
-            value = sneak.encode(msg);
-            expect(value).not.toBe(msg);
+        it('should not encode', () => {
+            expect(() => sneak.encode(msg)).toThrow();
         });
 
-        it('should decode', () => {
-            expect(sneak.decode(value)).toBe(msg);
+        it('should not decode', () => {
+            expect(() => sneak.decode(msg)).toThrow();
         });
     });
 
