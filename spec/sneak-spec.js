@@ -2,7 +2,7 @@
 'use strict';
 
 const bignum = require('bignum');
-const sneak = require('../index');
+const sneak = require('../src/index');
 
 describe('sneak', () => {
     const defaultKey = sneak.generateKey(100);

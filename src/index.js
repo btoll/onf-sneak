@@ -12,6 +12,7 @@
 
 const bignum = require('bignum');
 const crypto = require('crypto');
+const dh = require('./dh');
 let sharedKey = null;
 
 const convertKey = key => {
@@ -32,10 +33,7 @@ const decode = (msg, key) => {
 
     return toDecode.split(' ')
         .map(c => String.fromCharCode(
-            bignum.xor(
-                c,
-                secret
-            )
+            bignum.xor(c, secret)
         ))
         .join('');
 };
@@ -44,11 +42,9 @@ const encode = (msg, key) => {
     const secret = convertKey(key || sharedKey);
 
     const encoded = msg.split('')
-        .map(c => bignum.xor(
-            c.charCodeAt(),
-            secret
-        ))
-        .join(' ');
+        .map(c =>
+            bignum.xor(c.charCodeAt(), secret)
+        ).join(' ');
 
     return new Buffer(encoded, 'utf8').toString('base64');
 };
@@ -69,6 +65,9 @@ const generateKey = n => {
     return bignum(res.concat(generateKey(--n)).join(''));
 };
 
+const generatePrime = n =>
+    bignum.prime(n || 512);
+
 const getKey = () =>
     sharedKey;
 
@@ -79,7 +78,9 @@ const setKey = key => {
 module.exports = {
     decode,
     encode,
+    generateDHKey: dh,
     generateKey,
+    generatePrime,
     getKey,
     setKey
 };

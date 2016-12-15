@@ -5,7 +5,7 @@
   "bin": {
     "sneak": "./bin/sneak"
   },
-  "main": "index.js",
+  "main": "./src/index.js",
   "keywords": [
     "xor",
     "base64",
@@ -30,7 +30,8 @@
     "test": "npm run clean && npm run lint && npm run specs"
   },
   "dependencies": {
-    "bignum": "^0.12.5"
+    "bignum": "^0.12.5",
+    "logger": "git+https://github.com/btoll/logger.git"
   }
 }
 
