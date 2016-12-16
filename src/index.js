@@ -57,8 +57,10 @@ const generateKey = n => {
     }
 
     res = [];
+
     // Default to 50-digit keys.
     n = n || 50;
+
     // Keys will be 1-9, inclusive.
     res.push(new Uint32Array(crypto.randomBytes(1))[0] % 9 + 1);
 
