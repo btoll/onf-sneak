@@ -9,7 +9,7 @@
 # $1 = The shared secret symmetric key.
 #
 receive() {
-    ssh -q -tt remote_machine "cat fifo" | xargs -I % sneak -d % "$1"
+    ssh -q -tt remote_machine "cat fifo" | xargs -I % onf-sneak -d % "$1"
     receive
 }
 

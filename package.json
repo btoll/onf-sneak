@@ -1,9 +1,9 @@
 {
-  "name": "sneak",
+  "name": "onf-sneak",
   "version": "0.1.0",
   "description": "A simple JavaScript message encoder",
   "bin": {
-    "sneak": "./bin/sneak"
+    "onf-sneak": "./bin/onf-sneak"
   },
   "main": "./src/index.js",
   "keywords": [
@@ -14,11 +14,9 @@
   ],
   "author": "Benjamin Toll",
   "license": "MIT",
-  "devDependencies": {
-    "coveralls": "^2.11.15",
-    "dump_describes": "git+https://github.com/btoll/dump_describes.git",
-    "eslint": "^3.10.2",
-    "istanbul": "^0.4.5"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btoll/onf-sneak.git"
   },
   "scripts": {
     "clean": "rm -rf build coverage",
@@ -26,12 +24,18 @@
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "lint": "eslint spec src",
     "specs": "JASMINE_CONFIG_PATH=jasmine.json jasmine && npm run suites",
-    "suites": "dump_describes -t spec/sneak-spec.js -d spec -v --html && dump_describes -t spec/sneak-spec.js -d spec -v --md",
+    "suites": "dump_describes -t spec/onf-sneak-spec.js -d spec -v --html && dump_describes -t spec/onf-sneak-spec.js -d spec -v --md",
     "test": "npm run clean && npm run lint && npm run specs"
   },
   "dependencies": {
     "bignum": "^0.12.5",
-    "logger": "git+https://github.com/btoll/logger.git"
+    "onf-logger": "^0.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.15",
+    "dump_describes": "^0.1.0",
+    "eslint": "^3.10.2",
+    "istanbul": "^0.4.5"
   }
 }
 

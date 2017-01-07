@@ -17,13 +17,13 @@ let sharedKey = null;
 
 const convertKey = key => {
     if (!key) {
-        throw new Error('Sneak: There is no key to decode, aborting...');
+        throw new Error('onf-sneak: There is no key to decode, aborting...');
     }
 
     if (bignum.isBigNum(key) || (typeof key === 'number')) {
         return bignum(key);
     } else {
-        throw new Error('Sneak: Key must be of type Number or BigNum');
+        throw new Error('onf-sneak: Key must be of type Number or BigNum');
     }
 };
 

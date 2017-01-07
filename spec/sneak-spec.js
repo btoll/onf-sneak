@@ -4,7 +4,7 @@
 const bignum = require('bignum');
 const sneak = require('../src/index');
 
-describe('sneak', () => {
+describe('onf-sneak', () => {
     const defaultKey = sneak.generateKey(100);
     const secretMessage = 'The world is a vampire';
 

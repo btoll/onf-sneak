@@ -1,7 +1,7 @@
 'use strict';
 
 const bignum = require('bignum');
-const logger = require('logger');
+const logger = require('onf-logger');
 const readline = require('readline');
 
 let getSecretIter = null;

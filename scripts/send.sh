@@ -9,5 +9,5 @@
 # $1 = The message to encode
 # $2 = Thhe shared secret symmetric key.
 #
-sneak -e "$1" "$2" | xargs -I % echo "echo % > fifo" | xargs ssh -q -tt remote_machine
+onf-sneak -e "$1" "$2" | xargs -I % echo "echo % > fifo" | xargs ssh -q -tt remote_machine
 
