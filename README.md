@@ -27,5 +27,5 @@ Poor Man's Chat App
 
 ## License
 
-[MIT](LICENSE)
+[GPLv3](COPYING)
 
