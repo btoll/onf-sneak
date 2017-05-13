@@ -1,9 +1,10 @@
 # onf-sneak
 
-This is a simple message encoder that is intended to be fun and whimsical and a bit educational.
-
 [![Build Status](https://travis-ci.org/btoll/onf-sneak.svg?branch=master)](https://travis-ci.org/btoll/onf-sneak)
 [![Coverage Status](https://coveralls.io/repos/github/btoll/onf-sneak/badge.svg?branch=master)](https://coveralls.io/github/btoll/onf-sneak?branch=master)
+[![npm](https://img.shields.io/npm/v/onf-sneak.svg)](https://www.npmjs.com/package/onf-sneak)
+
+This is a simple message encoder that is intended to be fun and whimsical and a bit educational.
 
 ## Installation
 
